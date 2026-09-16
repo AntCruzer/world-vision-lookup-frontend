@@ -1,0 +1,286 @@
+.age-range {
+  min-width: 0;
+
+  padding: 10px 14px;
+
+  border: 1px solid
+    var(--wv-border);
+
+  border-radius: 8px;
+
+  background-color:
+    var(--wv-surface);
+}
+
+.age-range__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-bottom: 7px;
+}
+
+.age-range__label {
+  color: var(--wv-heading);
+
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.age-range__summary {
+  color:
+    var(--wv-orange-dark);
+
+  font-size: 0.88rem;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+/*
+ * Shared slider space.
+ */
+.age-range__sliders {
+  position: relative;
+
+  width: 100%;
+  height: 24px;
+}
+
+/*
+ * Base track.
+ */
+.age-range__track {
+  position: absolute;
+
+  top: 50%;
+  left: 10px;
+  right: 10px;
+
+  height: 5px;
+
+  transform:
+    translateY(-50%);
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background-color: #d7d7d7;
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+/*
+ * Selected orange range.
+ */
+.age-range__track-selected {
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  left:
+    var(--age-range-start);
+
+  right:
+    calc(
+      100% -
+      var(--age-range-end)
+    );
+
+  background-color:
+    var(--wv-orange);
+
+  border-radius: 999px;
+}
+
+/*
+ * Overlapping native ranges.
+ */
+.age-range__slider {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 24px;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  pointer-events: none;
+}
+
+.age-range__slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+
+  border: 0;
+
+  background: transparent;
+}
+
+.age-range__slider::-moz-range-track {
+  width: 100%;
+  height: 5px;
+
+  border: 0;
+
+  background: transparent;
+}
+
+/*
+ * Slider handles.
+ */
+.age-range__slider::-webkit-slider-thumb {
+  width: 18px;
+  height: 18px;
+
+  margin-top: -6.5px;
+
+  border: 2px solid
+    var(--wv-orange-dark);
+
+  border-radius: 50%;
+
+  background-color:
+    var(--wv-surface);
+
+  cursor: grab;
+
+  pointer-events: auto;
+
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.age-range__slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+
+  border: 2px solid
+    var(--wv-orange-dark);
+
+  border-radius: 50%;
+
+  background-color:
+    var(--wv-surface);
+
+  cursor: grab;
+
+  pointer-events: auto;
+}
+
+.age-range__slider--minimum {
+  z-index: 3;
+}
+
+.age-range__slider--maximum {
+  z-index: 4;
+}
+
+.age-range__slider--minimum:focus,
+.age-range__slider--maximum:focus {
+  z-index: 5;
+}
+
+.age-range__slider:focus {
+  outline: none;
+}
+
+.age-range__slider:focus-visible::-webkit-slider-thumb {
+  outline: 3px solid #ffb380;
+  outline-offset: 2px;
+}
+
+.age-range__slider:focus-visible::-moz-range-thumb {
+  outline: 3px solid #ffb380;
+  outline-offset: 2px;
+}
+
+/*
+ * Endpoint numbers.
+ */
+.age-range__limits {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 2px;
+
+  color: var(--wv-text-muted);
+
+  font-size: 0.72rem;
+}
+
+/*
+ * Current minimum and maximum.
+ */
+.age-range__values {
+  display: flex;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-top: 6px;
+
+  color: var(--wv-text);
+
+  font-size: 0.78rem;
+}
+
+.age-range__values strong {
+  color: var(--wv-heading);
+}
+
+/*
+ * Compact clear control.
+ */
+.age-range__clear {
+  margin-top: 6px;
+  padding: 3px 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color:
+    var(--wv-orange-dark);
+
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 700;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.age-range__clear:hover {
+  text-decoration: underline;
+}
+
+.age-range__clear:focus-visible {
+  outline: 2px solid
+    var(--wv-orange-dark);
+
+  outline-offset: 2px;
+}
+
+@media (max-width: 700px) {
+  .age-range {
+    padding: 10px 12px;
+  }
+}

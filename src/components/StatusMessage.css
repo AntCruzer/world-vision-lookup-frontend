@@ -1,0 +1,51 @@
+.status-message {
+  width: 100%;
+  max-width: 600px;
+
+  margin: 60px auto;
+  padding: 36px 24px;
+
+  text-align: center;
+
+  border: 1px solid var(--wv-border);
+  border-top: 5px solid var(--wv-orange);
+  border-radius: 14px;
+
+  background-color: var(--wv-surface);
+  color: var(--wv-text);
+
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.status-message__title {
+  margin: 0 0 12px;
+  color: var(--wv-heading);
+  font-weight: 700;
+}
+
+.status-message__text {
+  margin: 0 0 20px;
+
+  color: var(--wv-text);
+  line-height: 1.5;
+}
+
+.status-message__button {
+  padding: 10px 18px;
+
+  border: 2px solid var(--wv-orange-dark);
+  border-radius: 6px;
+
+  background-color: var(--wv-orange-dark);
+  color: #ffffff;
+
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.status-message__button:hover {
+  border-color: var(--wv-orange-darker);
+  background-color: var(--wv-orange-darker);
+  color: #ffffff;
+}

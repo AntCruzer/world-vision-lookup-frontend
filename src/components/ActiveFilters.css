@@ -1,0 +1,167 @@
+.active-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: 12px;
+  padding: 10px 12px;
+
+  border: 1px solid
+    var(--wv-border);
+
+  border-radius: 10px;
+
+  background-color:
+    var(--wv-surface);
+}
+
+.active-filters__title {
+  flex-shrink: 0;
+
+  margin-right: 2px;
+
+  color: var(--wv-heading);
+
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.active-filters__chips {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  flex: 1;
+
+  gap: 7px;
+
+  min-width: 0;
+}
+
+/* Individual filter chip */
+
+.active-filter-chip {
+  display: inline-flex;
+  align-items: stretch;
+
+  min-height: 30px;
+
+  overflow: hidden;
+
+  border: 1px solid
+    var(--wv-orange-dark);
+
+  border-radius: 999px;
+
+  background-color:
+    var(--wv-surface);
+
+  color: var(--wv-heading);
+
+  font-size: 0.78rem;
+  font-weight: 600;
+
+  line-height: 1;
+}
+
+.active-filter-chip__label {
+  display: flex;
+  align-items: center;
+
+  padding: 6px 8px 6px 11px;
+
+  white-space: nowrap;
+}
+
+.active-filter-chip__remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  min-width: 30px;
+
+  padding: 0;
+
+  border: 0;
+  border-left: 1px solid
+    var(--wv-orange-dark);
+
+  background-color:
+    transparent;
+
+  color:
+    var(--wv-orange-dark);
+
+  font: inherit;
+  font-size: 1.15rem;
+  font-weight: 700;
+
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.active-filter-chip__remove:hover {
+  background-color:
+    var(--wv-orange-dark);
+
+  color: #ffffff;
+}
+
+.active-filter-chip__remove:focus-visible {
+  outline: 3px solid #ffb380;
+  outline-offset: -3px;
+}
+
+/* Clear all */
+
+.active-filters__clear-all {
+  flex-shrink: 0;
+
+  padding: 5px 4px;
+
+  border: 0;
+
+  background: transparent;
+
+  color:
+    var(--wv-orange-dark);
+
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  text-decoration: underline;
+
+  cursor: pointer;
+}
+
+.active-filters__clear-all:hover {
+  color: var(--wv-heading);
+}
+
+.active-filters__clear-all:focus-visible {
+  outline: 3px solid #ffb380;
+  outline-offset: 2px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .active-filters {
+    align-items: flex-start;
+  }
+
+  .active-filters__title {
+    width: 100%;
+  }
+
+  .active-filters__clear-all {
+    width: 100%;
+
+    text-align: left;
+  }
+}
