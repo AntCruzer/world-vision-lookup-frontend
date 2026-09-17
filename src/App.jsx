@@ -13,7 +13,7 @@ import "./App.css";
 import ChildSearch from "./pages/ChildSearch";
 import ChildDetail from "./pages/ChildDetail";
 import StatusMessage from "./components/StatusMessage";
-import MockScenarioPanel from "./components/MockScenarioPanel";
+// import MockScenarioPanel from "./components/MockScenarioPanel";
 
 import {
   searchChildren,
@@ -23,10 +23,10 @@ import {
 
 const PAGE_SIZE = 10;
 
-const MOCKING_ENABLED =
-  import.meta.env.DEV &&
-  import.meta.env
-    .VITE_USE_MOCK_API === "true";
+// const MOCKING_ENABLED =
+//   import.meta.env.DEV &&
+//   import.meta.env
+//     .VITE_USE_MOCK_API === "true";
 
 const DEFAULT_SEARCH_PARAMS = {
   scope: "Available",
@@ -70,12 +70,12 @@ function App() {
     DEFAULT_SEARCH_PARAMS
   );
 
-  // Development-only forced
-  // MSW scenario.
-  const [
-    mockScenario,
-    setMockScenario,
-  ] = useState("");
+  // // Development-only forced
+  // // MSW scenario.
+  // const [
+  //   mockScenario,
+  //   setMockScenario,
+  // ] = useState("");
 
   // Pagination
   const [
@@ -131,21 +131,16 @@ function App() {
       try {
         const data =
           await searchChildren(
-            {
-              ...searchParams,
-              pageNumber,
-              pageSize: PAGE_SIZE,
-            },
-            {
-              signal:
-                controller.signal,
-
-              mockScenario:
-                MOCKING_ENABLED
-                  ? mockScenario
-                  : "",
-            }
-          );
+  {
+    ...searchParams,
+    pageNumber,
+    pageSize: PAGE_SIZE,
+  },
+  {
+    signal:
+      controller.signal,
+  }
+);
 
         setChildren(data.items);
 
@@ -183,7 +178,7 @@ function App() {
     searchParams,
     pageNumber,
     retryCount,
-    mockScenario,
+    // mockScenario,
   ]);
 
   // Regions
@@ -309,23 +304,16 @@ function App() {
     );
   }
 
-  function handleMockScenarioChange(
-    scenario
-  ) {
-    setMockScenario(scenario);
-    setPageNumber(1);
-  }
+  // function handleMockScenarioChange(
+  //   scenario
+  // ) {
+  //   setMockScenario(scenario);
+  //   setPageNumber(1);
+  // }
 
   return (
     <>
-      {MOCKING_ENABLED && (
-        <MockScenarioPanel
-          value={mockScenario}
-          onChange={
-            handleMockScenarioChange
-          }
-        />
-      )}
+      
 
       <Routes>
         <Route
