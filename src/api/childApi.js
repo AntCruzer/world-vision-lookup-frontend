@@ -1,3 +1,17 @@
+export const BENEFICIARY_API_BASE_URL =
+  (
+    import.meta.env
+      .VITE_BENEFICIARY_API_BASE_URL ||
+    "/api/v1"
+  ).replace(/\/+$/, "");
+
+function buildApiUrl(path) {
+  const normalizedPath =
+    path.replace(/^\/+/, "");
+
+  return `${BENEFICIARY_API_BASE_URL}/${normalizedPath}`;
+}
+
 async function readJsonResponse(
   response,
   errorMessage
@@ -82,21 +96,18 @@ export async function searchChildren(
   const queryString =
     query.toString();
 
+  const endpoint =
+    buildApiUrl(
+      "children/search"
+    );
+
   const url = queryString
-    ? `/api/v1/children/search?${queryString}`
-    : "/api/v1/children/search";
-
-  const headers = {};
-
-  if (options.mockScenario) {
-    headers["x-mock-scenario"] =
-      options.mockScenario;
-  }
+    ? `${endpoint}?${queryString}`
+    : endpoint;
 
   const response =
     await fetch(url, {
       signal: options.signal,
-      headers,
     });
 
   return readJsonResponse(
@@ -121,9 +132,12 @@ export async function getCountries(
   const queryString =
     query.toString();
 
+  const endpoint =
+    buildApiUrl("countries");
+
   const url = queryString
-    ? `/api/v1/countries?${queryString}`
-    : "/api/v1/countries";
+    ? `${endpoint}?${queryString}`
+    : endpoint;
 
   const response =
     await fetch(url);
@@ -137,7 +151,7 @@ export async function getCountries(
 export async function getRegions() {
   const response =
     await fetch(
-      "/api/v1/regions"
+      buildApiUrl("regions")
     );
 
   return readJsonResponse(

@@ -137,43 +137,43 @@ describe("searchChildren", () => {
     ).toBe(false);
   });
 
-  it("adds the mock scenario header when requested", async () => {
-    const fetchMock = vi.fn()
-      .mockResolvedValue({
-        ok: true,
-        status: 200,
-        json: vi.fn()
-          .mockResolvedValue({
-            items: [],
-            page: 1,
-            pageSize: 10,
-            hasNextPage: false,
-          }),
-      });
+  // it("adds the mock scenario header when requested", async () => {
+  //   const fetchMock = vi.fn()
+  //     .mockResolvedValue({
+  //       ok: true,
+  //       status: 200,
+  //       json: vi.fn()
+  //         .mockResolvedValue({
+  //           items: [],
+  //           page: 1,
+  //           pageSize: 10,
+  //           hasNextPage: false,
+  //         }),
+  //     });
 
-    vi.stubGlobal(
-      "fetch",
-      fetchMock
-    );
+  //   vi.stubGlobal(
+  //     "fetch",
+  //     fetchMock
+  //   );
 
-    await searchChildren(
-      {},
-      {
-        mockScenario: "empty",
-      }
-    );
+  //   await searchChildren(
+  //     {},
+  //     {
+  //       mockScenario: "empty",
+  //     }
+  //   );
 
-    const [
-      ,
-      options,
-    ] = fetchMock.mock.calls[0];
+  //   const [
+  //     ,
+  //     options,
+  //   ] = fetchMock.mock.calls[0];
 
-    expect(
-      options.headers[
-        "x-mock-scenario"
-      ]
-    ).toBe("empty");
-  });
+  //   expect(
+  //     options.headers[
+  //       "x-mock-scenario"
+  //     ]
+  //   ).toBe("empty");
+  // });
 
   it("keeps API validation information on a 400 error", async () => {
     const errorBody = {
